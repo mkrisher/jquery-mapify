@@ -1,0 +1,21 @@
+jQuery Mapify plugin
+Release Notes
+Revised: 11/11/08 Release 1
+Mike Krisher
+mike@mikekrisher.com
+
+-------------------------------------------
+CHANGELOG:
+
+11/11/08: R1
+
+- initial public repo created on github
+
+-------------------------------------------
+Description:
+
+- the jQuery Mapify plugin aims to recreate the 
+	Google Maps UI, so site owners and apps can 
+	use similar functionality with their own custom 
+	map (aka any image).
+	
