@@ -70,6 +70,7 @@
              		slider_image:   "images/slider.gif",
              		zoom:           100,
              		coordinates:    [0,0],
+             		distance:       50, 
              		debug:          true
              	}; 
 
@@ -79,7 +80,7 @@
             function drawLegend()
             {
                 debug('drawing legend: ' + elementID);
-                $("#" + elementID).append("<div id=\"legend\" style=\"position:absolute; top:15px; left:15px; z-index:2; height:450px; width:78px; border:dashed 1px red;\"></div>");
+                $("#" + elementID).append("<div id=\"legend\" style=\"position:absolute; top:15px; left:15px; z-index:2; height:280px; width:78px; border:dashed 1px red;\"></div>");
                 $("#legend").append("<div id=\"up\" style=\"position: absolute; top:0px; left:24px;\"><img src=" + defaults.up_image + " border=\"0\" alt=\"up\" /></div>");
                 $("#legend").append("<div id=\"left\" style=\"position: absolute; top:24px; left:0px;\"><img src=" + defaults.left_image + " border=\"0\" alt=\"left\" /></div>");
                 $("#legend").append("<div id=\"center\" style=\"position: absolute; top:24px; left:24px;\"><img src=" + defaults.center_image + " border=\"0\" alt=\"center\" /></div>");
@@ -88,6 +89,34 @@
                 $("#legend").append("<div id=\"plus\" style=\"position: absolute; top:72px; left:24px;\"><img src=" + defaults.plus_image + " border=\"0\" alt=\"plus\" /></div>");
                 $("#legend").append("<div id=\"track\" style=\"position: absolute; top:96px; left:24px;\"><img src=" + defaults.track_image + " border=\"0\" alt=\"track\" /></div>");
                 $("#legend").append("<div id=\"minus\" style=\"position: absolute; top:256px; left:24px;\"><img src=" + defaults.minus_image + " border=\"0\" alt=\"minus\" /></div>");
+                
+                $("#up").bind("click", function(e) {
+                   debug('up clicked');
+                });
+                
+                $("#right").bind("click", function(e) {
+                   debug('right clicked'); 
+                });
+                
+                $("#down").bind("click", function(e) {
+                   debug('down clicked'); 
+                });
+                
+                $("#left").bind("click", function(e) {
+                   debug('left clicked'); 
+                });
+                
+                $("#center").bind("click", function(e) {
+                   debug('center clicked'); 
+                });
+                
+                $("#plus").bind("click", function(e) {
+                   debug('plus clicked'); 
+                });
+                
+                $("#minus").bind("click", function(e) {
+                   debug('minus clicked'); 
+                });
             };
             
             // draw map, adding image to the current DOM element
@@ -96,6 +125,11 @@
                 debug('drawing map: ' + defaults.map_image);
                 $("#" + elementID).append("<img src=\"" + defaults.map_image + "\" border=\"0\" alt=\"map\" />");
             };
+            
+            function moveMap(direction) 
+            {
+                
+            }
                 
             // debug method, utilizing console or alerts
             function debug(s) 
