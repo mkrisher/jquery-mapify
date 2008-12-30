@@ -11,11 +11,22 @@
 	</script>
 	<style>
 		#map {
+			position: absolute;
+			top: 10px;
+			left: 10px;
 			width: 800;
 			height: 600;
-			z-index: 1;
-			border: solid 1px black;
+			border: dashed 1px black;
 			overflow: hidden;
+		}
+		#map_image {
+			position: relative;
+			top: 0px;
+			left: 0px;
+			width: 1600px;
+			height: 1200px;
+			/* transparency works, which could create some cool effects */
+			background-color: red;
 		}
 	</style>
 </head>
