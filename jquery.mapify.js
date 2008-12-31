@@ -80,8 +80,7 @@
             // ------------------------------ PRIVATE METHODS
             
             // draw legend method, in the upper left hand corner
-            function drawLegend()
-            {
+            function drawLegend() {
                 $("#" + elementID).append("<div id=\"legend\" style=\"position:absolute; top:15px; left:15px; z-index:1001; height:280px; width:78px;\"></div>");
                 $("#legend").append("<div id=\"up\" style=\"position: absolute; top:0px; left:24px;\"><img src=" + defaults.up_image + " border=\"0\" alt=\"up\" /></div>");
                 $("#legend").append("<div id=\"left\" style=\"position: absolute; top:24px; left:0px;\"><img src=" + defaults.left_image + " border=\"0\" alt=\"left\" /></div>");
@@ -143,8 +142,7 @@
             };
             
             // draw map, adding image to the current DOM element
-            function drawMap()
-            {
+            function drawMap() {
                 $("#" + elementID).append("<div id=\"map_image\"><img src=\"" + defaults.map_image + "\" border=\"0\" alt=\"map\"/></div>");
                 drawContainer();
                 $('#map_image').draggable({
@@ -156,6 +154,7 @@
                 });
             };
             
+            // draw a container element that will define the draggable bounds area
             function drawContainer() {
               $("#" + elementID).before("<div id=\"map_container\"></div>");
               // calculate width and height for container
@@ -171,6 +170,7 @@
               $("#map_container").width( $("#map_container").width() - $("#" + elementID).width() );
             }
             
+            // define the offset (x and y) of the element being mapified
             function defineOffset () {
               // define the offset of the "map" element in the window
               offsetX = $("#" + elementID).position().top;
