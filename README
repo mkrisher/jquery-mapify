@@ -1,6 +1,6 @@
 jQuery Mapify plugin
 Release Notes
-Revised: 12/30/08 Pre-Release 2
+Revised: 01/07/09 Release 1
 Mike Krisher
 mike@mikekrisher.com
 
@@ -9,6 +9,10 @@ Git: git://github.com/mkrisher/jquery-mapify.git
 
 -------------------------------------------
 CHANGELOG:
+
+01/07/09: R1
+
+-	first beta release
 
 12/30/08: PR2
 
