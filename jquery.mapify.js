@@ -11,9 +11,7 @@
  * http://www.gnu.org/licenses/gpl.html
  * 
  * TODO: add logic for overwriting defaults with options passed in
- * TODO: refactor add zoom_levels, make dynamic based on image_sizes count
  * TODO: enable zoom scale (track)
- * TODO: refactor zoom property to start at 0
  */
 /**
  *
@@ -102,8 +100,7 @@
               minus_image:    "images/minus.gif",
               track_image:    "images/track.gif",
               slider_image:   "images/slider.gif",
-              zoom:           2,
-              zoom_levels:    3,
+              zoom:           1,
               zoom_sizes:     [[800,600], [1600,1200], [3200,2400]],
               coordinates:    [200,200],
               distance:       256,
@@ -167,7 +164,7 @@
                 });
                 
                 $("#plus").bind("click", function(e) {
-                  if (defaults.zoom < defaults.zoom_levels) {
+                  if (defaults.zoom < defaults.zoom_sizes.length - 1) {
                     setCoordinates();
                     defaults.zoom++;
                     zoom();  
@@ -175,7 +172,7 @@
                 });
                 
                 $("#minus").bind("click", function(e) {
-                  if (defaults.zoom > 1) {
+                  if (defaults.zoom > 0) {
                     setCoordinates();
                     defaults.zoom--;
                     zoom();
@@ -188,8 +185,8 @@
               // remove any previous image
               $("#map_image").remove();
               var default_image = defaults.map_image.substring(0, defaults.map_image.indexOf('.')) + '_' + defaults.zoom + defaults.map_image.substring(defaults.map_image.indexOf('.'));
-              var width = defaults.zoom_sizes[defaults.zoom - 1][0];
-              var height = defaults.zoom_sizes[defaults.zoom - 1][1];
+              var width = defaults.zoom_sizes[defaults.zoom][0];
+              var height = defaults.zoom_sizes[defaults.zoom][1];
               $("#" + elementID).append("<div id=\"map_image\"><img src=\"" + default_image + "\" border=\"0\" width=\"" + width + "\" height=\"" + height + "\" alt=\"map\"/></div>");
               // define width and height of element
               $("#map_image").width($("#map_image img").width());
@@ -237,8 +234,8 @@
             // convert coordinates post zoom
             function getCoordinates() {
               if (preZoomLeft != null) {
-                var widthDiff = defaults.zoom_sizes[defaults.zoom - 1][0] / defaults.zoom_sizes[preZoomZoomLevel - 1][0];
-                var heightDiff = defaults.zoom_sizes[defaults.zoom - 1][1] / defaults.zoom_sizes[preZoomZoomLevel - 1][1];
+                var widthDiff = defaults.zoom_sizes[defaults.zoom][0] / defaults.zoom_sizes[preZoomZoomLevel][0];
+                var heightDiff = defaults.zoom_sizes[defaults.zoom][1] / defaults.zoom_sizes[preZoomZoomLevel][1];
                 var postZoomLeft = preZoomLeft * widthDiff;
                 var postZoomTop = preZoomTop * heightDiff;
                 defaults.coordinates = [postZoomLeft, postZoomTop];
@@ -258,7 +255,7 @@
               // redraw the map with a new image, using the new zoom settings
               drawMap();
               // disable buttons depending on zoom number
-              if(defaults.zoom == 1) {
+              if(defaults.zoom == 0) {
                 $("#minus").animate({ 
                   opacity: 0.5,
                 }, defaults.speed);
@@ -267,7 +264,7 @@
                   opacity: 1,
                 }, defaults.speed);
               }
-              if(defaults.zoom == defaults.zoom_levels) {
+              if(defaults.zoom == defaults.zoom_sizes.length - 1) {
                 $("#plus").animate({ 
                   opacity: 0.5,
                 }, defaults.speed);
