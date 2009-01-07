@@ -6,8 +6,18 @@
 	<script type="text/javascript" src="jquery.mapify.js"></script>
 	<script type="text/javascript" charset="utf-8">
 		$(document).ready(function() {
-		   $("#map").mapify();
-		 });
+			// define overwrites
+			var overwrites = {
+				map_image:      "images/map.gif",
+        zoom:           1,
+        zoom_sizes:     [[800,600], [1600,1200]],
+        coordinates:    [800,600],
+        distance:       256,
+        speed:          100,
+        debug:          true
+			}
+		  $("#map").mapify(overwrites);
+		});
 	</script>
 	<style>
 		#map {
@@ -23,7 +33,6 @@
 			position: relative;
 			top: 0px;
 			left: 0px;
-			/* transparency works, which could create some cool effects */
 			background-color: blue;
 		}
 	</style>

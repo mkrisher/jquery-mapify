@@ -10,7 +10,6 @@
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
  * 
- * TODO: add logic for overwriting defaults with options passed in
  * TODO: enable zoom scale (track)
  */
 /**
@@ -109,6 +108,13 @@
             };
              	
             // ------------------------------ PRIVATE METHODS
+            
+            // overwrite the defaults, using passed arguments
+            function setDefaults(obj) {
+              for (var i in obj) {
+                defaults[i] = obj[i];
+              }
+            }
             
             // draw legend method, in the upper left hand corner
             function drawLegend() {
@@ -296,8 +302,11 @@
             // ------------------------------ PUBLIC METHODS
              
             // init method, sets up the map functions and properties
-            this.init = function() 
+            this.init = function(obj) 
             {
+              if (obj != null) {
+                setDefaults(obj);
+              }
               elementID = this[0].id;
               return this.each(function() {
                 drawLegend();
