@@ -11,6 +11,9 @@
  * http://www.gnu.org/licenses/gpl.html
  * 
  * TODO: enable zoom scale (track)
+ * TODO: dry up object references
+ * TODO: add preloading to all map images
+ * TODO: figure out why webkit container width needs to be resized
  */
 /**
  *
@@ -225,8 +228,11 @@
               $("#map_container").css({'position' : 'absolute'});
               $("#map_container").css({'left' : left});
               $("#map_container").css({'top' : top});
-              // resize contaier so image can't be dragged past x=0
-              $("#map_container").width( $("#map_image").width() );
+              $("#map_container").css({'background-color' : 'yellow'});
+              
+              // resize container so image can't be dragged past x=0, if webkit (this shouldn't be necessary)
+              if (navigator.userAgent.indexOf('Safari') > -1)
+                $("#map_container").width( $("#map_image").width() );
             }
 
             // define the pre-zoom coordinates
