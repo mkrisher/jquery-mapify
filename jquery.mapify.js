@@ -206,7 +206,7 @@
                 zIndex: 	1000,
               	ghosting:	false,
               	opacity: 	1,
-              	cursor: 'hand',
+              	cursor: 'move',
               	containment: $("#map_container")
               });
               
@@ -228,7 +228,6 @@
               $("#map_container").css({'position' : 'absolute'});
               $("#map_container").css({'left' : left});
               $("#map_container").css({'top' : top});
-              $("#map_container").css({'background-color' : 'yellow'});
               
               // resize container so image can't be dragged past x=0, if webkit (this shouldn't be necessary)
               if (navigator.userAgent.indexOf('Safari') > -1)
